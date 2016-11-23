@@ -9,11 +9,11 @@ object Common {
   def specs2Dep(sv: String) =
     sv.split("[.-]").toList match {
       case "2" :: "9" :: _ => "org.specs2" %% "specs2" % "1.12.4.1"
-      case _ => "org.specs2" %% "specs2" % "2.3.11"
+      case _ => "org.specs2" %% "specs2-core" % "3.8.6"
     }
 
 
-  val dispatchVersion = "0.8.10"
+  val dispatchVersion = "0.8.11"
   def dispatchDeps =
     "net.databinder" %% "dispatch-mime" % dispatchVersion ::
     "net.databinder" %% "dispatch-http" % dispatchVersion :: Nil
@@ -26,16 +26,16 @@ object Common {
   val settings: Seq[Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
     organization := "net.databinder",
 
-    version := "0.9.0-beta1",
+    version := "2.0.0-SNAPSHOT",
 
-    crossScalaVersions := Seq("2.11.2", "2.10.4"),
+    crossScalaVersions := Seq("2.12.0"),
 
     scalaVersion := crossScalaVersions.value.head,
 
     scalacOptions ++=
       Seq("-Xcheckinit", "-encoding", "utf8", "-deprecation", "-unchecked", "-feature"),
 
-    javacOptions in Compile ++= Seq("-source", "1.6", "-target", "1.6"),
+    javacOptions in Compile ++= Seq("-source", "1.8", "-target", "1.8"),
 
     incOptions := incOptions.value.withNameHashing(true),
 
